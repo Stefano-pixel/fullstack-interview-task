@@ -37,8 +37,17 @@ We're interested in how you break down the work and build your solution in a cle
 - How to run any additional scripts or tests you may have added
 - Relating to the task please add answers to the following questions;
     1. How might you make this service more secure?
+     I would use JSON Web Token to authenticate the user who tries to access to REST services.
+     Firstly i would create a new REST service (for example /login) where the user can accomplish the 
+     authentication and so gain a token. 
+     Then i would implement the logic of JWT inside a middleware, in this way the authentication (with the token 
+     gained) of the user would happen before the access to the REST service. 
     2. How would you make this solution scale to millions of records?
+     I would use streams instead of synchronous methods, because with millions of records the service would stuck,
+     or node will go out of memory.
     3. What else would you have liked to improve given more time?
+     I would have try to use streams instead of synchronous methods to read and write the csv file, and i would 
+     have added more unit tests
   
 
 On completion email a link to your repository to your contact at Moneyhub and ensure it is publicly accessible.
@@ -61,6 +70,11 @@ The services will try to use ports 8081, 8082 and 8083
 
 Use Postman or any API tool of you choice to trigger your endpoints (this is how we will test your new route).
 
+To run the unit test execute the comand 
+```bash 
+npm test 
+```
+
 ### Existing routes
 We have provided a series of routes 
 
@@ -75,3 +89,4 @@ Financial Companies - localhost:8082
 
 Admin - localhost:8083
 - `/investments/:id` get an investment record by id
+- `/investments/export/csv` exports a csv formatted text of all investments
